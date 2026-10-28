@@ -1,62 +1,43 @@
 <!DOCTYPE html>
-<html lang="hi">
-<head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>APLA DUKAN - 151000 FIX</title>
+<html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>APLA DUKAN FIX</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}body{background:#111;color:#fff;font-family:Arial}
-.top{background:#000;padding:10px;display:flex;gap:8px;align-items:center;position:sticky;top:0;z-index:99;border-bottom:2px solid red}
-.logo{color:red;font-size:20px;font-weight:900}
-.search{flex:1;padding:8px;background:#222;border:1px solid #555;color:#fff;border-radius:20px}
-.btn{background:red;color:#fff;padding:8px 12px;border:none;border-radius:20px;font-weight:bold}
-.bar{background:#222;padding:8px;display:flex;gap:6px;overflow:auto}
-.bar button{padding:8px 12px;background:#333;color:#fff;border:none;border-radius:20px;white-space:nowrap}
-.yellow{background:#ff0;color:#000;text-align:center;padding:8px;font-weight:bold;font-size:12px}
+.top{background:#000;padding:10px;display:flex;gap:8px;position:sticky;top:0;z-index:99;border-bottom:2px solid red}
+.logo{color:red;font-weight:900;font-size:18px}
+.search{flex:1;padding:8px 12px;border-radius:20px;border:1px solid #555;background:#222;color:#fff}
+.btn{background:red;color:#fff;border:none;padding:8px 12px;border-radius:20px;font-weight:bold}
+.bar{padding:8px;background:#222;display:flex;gap:6px;overflow:auto}
+.bar button{padding:8px 12px;border-radius:20px;border:none;background:#333;color:#fff;white-space:nowrap}
+.yellow{background:yellow;color:#000;text-align:center;padding:8px;font-weight:bold;font-size:12px}
 .grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:10px}
-.card{background:#222;border-radius:8px;padding:10px;border:1px solid #333}
-.card.hot{border:2px solid #ff0;background:#332200}
-.num{background:red;color:#fff;font-size:10px;padding:2px 6px;border-radius:10px;display:inline-block}
-.num.hot{background:#ff0;color:#000}
-.card h4{font-size:13px;margin:6px 0;min-height:36px}
+.card{background:#222;padding:10px;border-radius:8px;border:1px solid #333}
+.hot{border:2px solid yellow;background:#332200}
+.num{background:red;color:#fff;font-size:10px;padding:2px 6px;border-radius:10px}
+.card h4{font-size:13px;margin:6px 0;min-height:32px}
 .price{color:#0f0;font-weight:bold}
-.card button{width:100%;padding:6px;background:#fff;color:#000;border:none;border-radius:5px;font-weight:bold;margin-top:6px}
-</style>
-</head>
-<body>
-<div class="top">
-<div class="logo">APLA DUKAN</div>
-<input id="search" class="search" placeholder="Khojo - 191 likho">
-<button class="btn" onclick="openCart()">Cart <span id="cnt">0</span></button>
-</div>
-<div class="bar">
-<button onclick="goTo(1)">#1 Start</button>
-<button onclick="goTo(191)">🔥 #191 Rs23</button>
-<button onclick="goTo(1000)">#1000</button>
-<button onclick="goTo(10000)">#10000</button>
-<button onclick="goTo(50000)">#50000</button>
-<button onclick="goTo(100000)">#1 Lakh</button>
-</div>
-<div class="yellow" id="info">Total 1,51,000 - Abhi #1 se #200 dikh rahe - Scroll karo</div>
+.card button{width:100%;padding:6px;background:#fff;color:#000;border:none;border-radius:5px;font-weight:bold;margin-top:5px}
+.next{width:95%;margin:15px auto;display:block;padding:14px;background:red;color:#fff;border:none;border-radius:10px;font-weight:bold;font-size:16px}
+</style></head><body>
+<div class="top"><div class="logo">APLA DUKAN</div><input id="s" class="search" placeholder="191 likho"><button class="btn" onclick="alert('Cart: '+cart.length+' items')">Cart <span id="cnt">0</span></button></div>
+<div class="bar"><button onclick="location.href='?#191'">🔥 #191 Rs23</button><button onclick="jump(1)">#1</button><button onclick="jump(1000)">#1000</button><button onclick="jump(10000)">#10000</button></div>
+<div class="yellow" id="info">Loading...</div>
 <div id="grid" class="grid"></div>
-<div style="text-align:center;padding:20px;color:#888" id="more">Scroll karo neeche - Aur 200 load honge...</div>
+<button class="next" onclick="more()">👇 Aur 200 Dikhao - 1,51,000 tak</button>
 
 <script>
 var all=[];
 for(var i=1;i<=151000;i++){
-var n="Product "+i+" 1 Kilo";
-var p=50+(i%300);
-if(i==191){n="Parachute Tel 500ML SPECIAL";p=23;}
-if(i==192){n="Parachute Tel 1 Liter";p=250;}
-if(i==193){n="Toor Dal 1 Kilo";p=120;}
-if(i==194){n="Kaju Katli 8 Pieces";p=250;}
-if(i==195){n="Fortune Oil 1 Liter";p=135;}
-if(i==196){n="Sugar 1 Kilo";p=42;}
-if(i==197){n="Aashirvaad Atta 10 Kilo";p=420;}
-all.push({no:i,name:n,price:p});
+var name="Product "+i+" 1 Kilo Rs "+(50+i%200);
+if(i==191)name="Parachute Tel 500ML SPECIAL Rs 23";
+if(i==192)name="Parachute Tel 1 Liter Rs 250";
+if(i==193)name="Toor Dal 1 Kilo Rs 120";
+if(i==194)name="Kaju Katli 8 Pieces Rs 250";
+all.push({no:i,name:name,price:i==191?23:50+i%200});
 }
 var cart=[];
 var start=0;
-var count=200;
+var step=200;
 var filtered=null;
 
 function getData(){return filtered?filtered:all;}
@@ -64,34 +45,48 @@ function getData(){return filtered?filtered:all;}
 function render(reset){
 if(reset){start=0;document.getElementById('grid').innerHTML="";}
 var data=getData();
-var end=Math.min(start+count,data.length);
-var html="";
+var end=start+step;
+if(end>data.length)end=data.length;
+var out="";
 for(var i=start;i<end;i++){
-var item=data[i];
-var isHot=item.no==191;
-html+='<div class="card '+(isHot?'hot':'')+'"><div class="num '+(isHot?'hot':'')+'">#'+item.no+(isHot?' HOT':'')+'</div><h4>'+item.name+'</h4><div class="price">Rs '+item.price+'</div><button onclick="add('+item.no+')">Add #'+item.no+'</button></div>';
+var p=data[i];
+var hot=p.no==191;
+out+='<div class="card '+(hot?'hot':'')+'"><div class="num">#'+p.no+'</div><h4>'+p.name+'</h4><div class="price">Rs '+p.price+'</div><button onclick="add('+p.no+')">Add #'+p.no+'</button></div>';
 }
-document.getElementById('grid').innerHTML+=html;
-document.getElementById('info').innerText='Total '+data.length+' / 1,51,000 - Dikh rahe #'+(data[start]?data[start].no:0)+' se #'+(data[end-1]?data[end-1].no:0);
+document.getElementById('grid').innerHTML+=out;
+document.getElementById('info').innerHTML='Total '+data.length+' - Dikh rahe #'+(start+1)+' se #'+end+' - #191 Parachute Rs23 fix hai';
 start=end;
-if(start>=data.length){document.getElementById('more').innerText="✅ Sab "+data.length+" dikh gaye";}
-else{document.getElementById('more').innerText="Scroll karo - Aur 200 load honge... "+start+" / "+data.length;}
 }
 
-function goTo(n){
+function more(){render(false);}
+
+function jump(n){
 filtered=null;
-document.getElementById('search').value="";
 document.getElementById('grid').innerHTML="";
 start=n-1;
-if(start<0)start=0;
-if(start>all.length-1)start=all.length-200;
 render(false);
 window.scrollTo(0,0);
 }
 
-document.getElementById('search').addEventListener('input',function(){
+function add(no){
+var p=all[no-1];
+cart.push(p);
+document.getElementById('cnt').innerHTML=cart.length;
+alert('#'+p.no+' '+p.name+' Add ho gaya!');
+}
+
+document.getElementById('s').addEventListener('input',function(){
 var q=this.value.trim().toLowerCase();
 if(q==""){filtered=null;document.getElementById('grid').innerHTML="";start=0;render(false);return;}
-if(!isNaN(q)){var num=parseInt(q);if(num>=1&&num<=151000){filtered=[all[num-1]];document.getElementById('grid').innerHTML="";start=0;render(false);return;}}
+if(!isNaN(q)){var n=parseInt(q);if(n>=1&&n<=151000){filtered=[all[n-1]];document.getElementById('grid').innerHTML="";start=0;render(false);return;}}
 var res=[];
-for(var i=0;i<all.length;i++){if(all[i].name.toLowerCase().indexOf(q)!=-1){res.push(all[i]);if(res.length>2000)break;}}
+for(var i=0;i<all.length;i++){if(all[i].name.toLowerCase().indexOf(q)!=-1){res.push(all[i]);if(res.length>1000)break;}}
+filtered=res;
+document.getElementById('grid').innerHTML="";
+start=0;
+render(false);
+});
+
+render(false);
+</script>
+</body></html>
