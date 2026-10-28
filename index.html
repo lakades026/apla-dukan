@@ -1,159 +1,86 @@
 <!DOCTYPE html>
 <html lang="hi">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>APLA DUKAN - Sahi System - 1,51,000</title>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>APLA DUKAN - 1,51,000 Products</title>
 <style>
-*{margin:0;padding:0;box-sizing:border-box}body{background:#111;color:#fff;font-family:Arial}
-.top{position:sticky;top:0;z-index:99;background:#000;padding:10px;display:flex;gap:6px;align-items:center;border-bottom:2px solid #ffd700;flex-wrap:wrap}
-.logo{color:#ffd700;font-size:18px;font-weight:900}
-.search{flex:1;min-width:120px;background:#222;border:1px solid #555;border-radius:20px;padding:8px 12px;color:#fff}
-.btn{background:#ffd700;color:#000;padding:7px 12px;border-radius:20px;font-weight:bold;cursor:pointer;border:none;font-size:12px}
-.btnRed{background:#E50914;color:#fff}
+*{margin:0;padding:0;box-sizing:border-box}body{background:#141414;color:#fff;font-family:Arial}
+.top{position:sticky;top:0;z-index:99;background:#000;padding:10px;display:flex;gap:6px;align-items:center;border-bottom:2px solid #E50914}
+.logo{color:#E50914;font-size:18px;font-weight:900}
+.search{flex:1;padding:8px 10px;border-radius:4px;border:1px solid #555;background:#222;color:#fff}
+.btn{background:#E50914;color:#fff;padding:8px 12px;border-radius:4px;border:none;font-weight:bold}
+.bar{position:sticky;top:52px;z-index:90;background:#111;padding:8px;display:flex;gap:6px;overflow:auto;border-bottom:1px solid #222}
+.bar button{padding:6px 12px;background:#2a2a2a;color:#fff;border:1px solid #444;border-radius:20px;white-space:nowrap;font-size:12px}
+.bar button.active{background:#fff;color:#000}
 .grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:10px}
-.card{background:#1e1e1e;border:1px solid #333;border-radius:8px;padding:10px;position:relative}
-.num{position:absolute;top:4px;left:5px;background:#ffd700;color:#000;font-size:9px;font-weight:bold;padding:2px 5px;border-radius:10px}
-.card h3{font-size:12px;margin-top:14px;min-height:40px;line-height:1.2}
-.unit{font-size:10px;color:#aaa;background:#2a2a2a;padding:2px 5px;border-radius:4px;display:inline-block;margin:2px 0}
-.price{color:#ffd700;font-weight:bold;margin:4px 0;font-size:14px}
+.card{background:#1f1f1f;border-radius:6px;padding:10px;border:1px solid #333;position:relative}
+.card.hot{border:2px solid #ffd700}
+.num{font-size:9px;background:#E50914;color:#fff;padding:2px 6px;border-radius:10px;display:inline-block;margin-bottom:4px}
+.num.gold{background:#ffd700;color:#000}
+.card h4{font-size:12px;min-height:34px;line-height:1.2}
+.unit{font-size:10px;color:#aaa;background:#2a2a2a;padding:2px 6px;border-radius:4px;display:inline-block;margin:2px 0}
+.price{color:#46d369;font-weight:bold;font-size:14px;margin-top:4px}
 .mrp{color:#888;text-decoration:line-through;font-size:10px}
-.card button{width:100%;background:#ffd700;border:none;padding:6px;border-radius:5px;font-weight:bold;cursor:pointer;margin-top:4px;font-size:12px}
-.modal{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.95);z-index:999;display:none;padding:12px;overflow:auto}
-.modalInner{background:#fff;color:#000;border-radius:12px;padding:15px;max-width:500px;margin:10px auto}
-.inp, .sel{width:100%;padding:11px;margin:6px 0;border:1px solid #ccc;border-radius:6px;font-size:14px}
-.row2{display:flex;gap:6px}
-.row2>*{flex:1}
-.rangeBar{display:flex;gap:5px;overflow:auto;padding:8px;background:#1a1a1a}
-.rangeBar button{padding:6px 10px;border-radius:20px;border:1px solid #ffd700;background:#000;color:#ffd700;white-space:nowrap;font-size:11px}
-.rangeBar button.active{background:#ffd700;color:#000}
+.card button{width:100%;margin-top:6px;padding:7px;background:#fff;color:#000;border:none;border-radius:4px;font-weight:bold;font-size:12px}
+.info{position:sticky;top:90px;z-index:80;background:#ffd700;color:#000;text-align:center;padding:6px;font-weight:bold;font-size:11px}
+.load{padding:15px;text-align:center;color:#888}
 </style>
 </head>
 <body>
 <div class="top">
 <div class="logo">APLA DUKAN</div>
-<input id="search" class="search" placeholder="Khojo - 500ML, Kilo, Pieces...">
+<input id="search" class="search" placeholder="1,51,000 me khojo - 191, 500ML, Kilo...">
 <button class="btn" onclick="openCart()">🛒 <span id="cartCount">0</span></button>
-<button class="btn btnRed" onclick="openAdmin()">+ Product Add Karo</button>
 </div>
 
-<div class="rangeBar">
-<button onclick="setRange(1,200)" class="active">1-200</button>
-<button onclick="filterUnit('ML')">500 ML Wale</button>
-<button onclick="filterUnit('Liter')">Liter Wale</button>
-<button onclick="filterUnit('Kilo')">Kilo Wale</button>
-<button onclick="filterUnit('Pieces')">Pieces Wale</button>
-<button onclick="setRange(191,191)" style="background:#E50914;color:#fff;border-color:#E50914">#191</button>
+<div class="bar" id="bar">
+<button onclick="jump(1)" class="active">#1 se Start</button>
+<button onclick="jump(191)">🔥 #191 Parachute ₹23</button>
+<button onclick="jump(1000)">#1,000</button>
+<button onclick="jump(10000)">#10,000</button>
+<button onclick="jump(25000)">#25K</button>
+<button onclick="jump(50000)">#50K</button>
+<button onclick="jump(100000)">#1 Lakh</button>
+<button onclick="jump(151000)">#1.51 Lakh</button>
 </div>
 
-<div style="background:#ffd700;color:#000;text-align:center;padding:6px;font-size:11px;font-weight:bold" id="info">Total 1,51,000 - Sahi Naam + ML/Kilo/Pieces System</div>
-<div id="main" class="grid"></div>
+<div class="info" id="info">Total 1,51,000 Products - Scroll karo, sab ayenge - Abhi #1 se #200 dikh rahe</div>
+<div id="grid" class="grid"></div>
+<div id="loader" class="load">👇 Scroll karo - Aur 200 products load honge... 1,51,000 tak</div>
 
-<!-- ADMIN - PRODUCT ADD -->
-<div id="adminBox" class="modal">
-<div class="modalInner">
-<h2>✅ Sahi Product Add Karo</h2>
-<p style="font-size:12px;color:#555">Jaise: Parachute Tel - 500ML - ₹23 aise banega</p>
-<input id="pName" class="inp" placeholder="Product Naam - Jaise: Parachute Tel, Toor Dal, Kaju Katli">
-<div class="row2">
-<input id="pQty" class="inp" type="number" placeholder="Quantity - 500">
-<select id="pUnit" class="sel"><option value="ML">ML</option><option value="Liter">Liter</option><option value="Gram">Gram</option><option value="Kilo">Kilo</option><option value="Pieces">Pieces</option><option value="Bottle">Bottle</option><option value="Packet">Packet</option></select>
-</div>
-<div class="row2">
-<input id="pPrice" class="inp" type="number" placeholder="Rate - 23">
-<select id="pCat" class="sel"><option>Kirana</option><option>Cosmetics</option><option>Mobile</option><option>Bartan</option><option>Kapda</option><option>Masala</option><option>Mithai</option><option>Cold Drink</option></select>
-</div>
-<button onclick="addProduct()" style="width:100%;background:#25D366;color:#fff;padding:12px;border:none;border-radius:8px;font-weight:bold">✅ Add Karo - List Me Ayega</button>
-
-<div style="background:#f5f5f5;padding:10px;border-radius:8px;margin-top:12px">
-<p style="font-weight:bold;font-size:13px">Quick Add - 1 Click Me:</p>
-<button onclick="quickAdd('Parachute Tel',500,'ML',23,'Cosmetics')" class="btn" style="margin:3px">Parachute 500ML ₹23</button>
-<button onclick="quickAdd('Parachute Tel',1,'Liter',250,'Cosmetics')" class="btn" style="margin:3px">Parachute 1L ₹250</button>
-<button onclick="quickAdd('Toor Dal',1,'Kilo',120,'Kirana')" class="btn" style="margin:3px">Toor Dal 1 Kilo ₹120</button>
-<button onclick="quickAdd('Kaju Katli',8,'Pieces',250,'Mithai')" class="btn" style="margin:3px">Kaju Katli 8 Pcs ₹250</button>
-<button onclick="quickAdd('Fortune Oil',1,'Liter',135,'Kirana')" class="btn" style="margin:3px">Fortune 1L ₹135</button>
-</div>
-
-<button onclick="closeAdmin()" style="width:100%;margin-top:10px;padding:10px;background:#eee;border:none;border-radius:8px">Band Karo</button>
-</div>
-</div>
-
-<!-- CART -->
-<div id="cartBox" class="modal">
-<div class="modalInner">
-<h2>🛒 Order</h2>
-<div id="cartItems"></div>
-<input id="cName" class="inp" placeholder="Naam *">
-<input id="cPhone" class="inp" placeholder="Phone *">
-<input id="cAddr" class="inp" placeholder="Address *">
-<button onclick="sendWA()" style="width:100%;background:#25D366;color:#fff;padding:12px;border:none;border-radius:8px;font-weight:bold">WhatsApp Bhejo - 7415698590</button>
-<button onclick="closeCart()" style="width:100%;margin-top:8px;padding:10px;background:#eee;border:none;border-radius:8px">Band</button>
+<div id="cartBox" style="display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.95);z-index:999;padding:15px;overflow:auto">
+<div style="background:#fff;color:#000;max-width:400px;margin:auto;border-radius:10px;padding:15px">
+<h2>🛒 My List - <span id="totalItems">0</span> items</h2>
+<div id="cartList" style="margin:10px 0;max-height:300px;overflow:auto"></div>
+<div style="font-weight:bold" id="totalPrice"></div>
+<button onclick="sendWA()" style="width:100%;padding:12px;background:#25D366;color:#fff;border:none;border-radius:6px;font-weight:bold;margin-top:10px">WhatsApp Order - 7415698590</button>
+<button onclick="document.getElementById('cartBox').style.display='none'" style="width:100%;padding:10px;background:#eee;border:none;border-radius:6px;margin-top:8px">Band Karo</button>
 </div>
 </div>
 
 <script>
-let all=JSON.parse(localStorage.getItem('apla_products')||'null');
-if(!all){
-all=[];
-let init=[
-["Parachute Tel",500,"ML",23,"Cosmetics"],
-["Parachute Tel",1,"Liter",250,"Cosmetics"],
-["Fortune Sarso Tel",1,"Liter",135,"Kirana"],
-["Toor Dal",1,"Kilo",120,"Kirana"],
-["Moong Dal",1,"Kilo",110,"Kirana"],
-["Kaju Katli",8,"Pieces",250,"Mithai"],
-["Kaju Katli",16,"Pieces",480,"Mithai"],
-["Sugar",1,"Kilo",42,"Kirana"],
-["Aashirvaad Atta",10,"Kilo",420,"Kirana"],
-["Tata Salt",1,"Kilo",28,"Kirana"]
+// 1,51,000 PRODUCTS BANATE HAI - SAHI NAAM + ML/KILO/PIECES
+var all=[];
+var bases=[
+ ["Parachute Tel",500,"ML",23,"Cosmetics","🥥"],
+ ["Parachute Tel",1,"Liter",250,"Cosmetics","🥥"],
+ ["Fortune Sarso Tel",1,"Liter",135,"Kirana","🛢️"],
+ ["Toor Dal",1,"Kilo",120,"Kirana","🌾"],
+ ["Moong Dal",1,"Kilo",110,"Kirana","🌾"],
+ ["Kaju Katli",8,"Pieces",250,"Mithai","🍬"],
+ ["Kaju Katli",16,"Pieces",480,"Mithai","🍬"],
+ ["Sugar",1,"Kilo",42,"Kirana","🧂"],
+ ["Tata Salt",1,"Kilo",28,"Kirana","🧂"],
+ ["Aashirvaad Atta",10,"Kilo",420,"Kirana","🌾"],
+ ["Fortune Oil",5,"Liter",650,"Kirana","🛢️"],
+ ["Colgate",2,"Pieces",85,"Cosmetics","🪥"],
+ ["Surf Excel",1,"Kilo",95,"Kirana","🧼"],
+ ["Maggi",8,"Pieces",96,"Kirana","🍜"],
+ ["Coca Cola",2,"Liter",90,"Cold Drink","🥤"]
 ];
-for(let i=1;i<=151000;i++){
- if(i<=init.length){
-  let d=init[i-1];
-  all.push({no:i,name:`${d[0]} - ${d[1]} ${d[2]}`,base:d[0],qty:d[1],unit:d[2],price:d[3],cat:d[4],mrp:d[3]+20});
- } else {
-  all.push({no:i,name:`Product ${i} - 1 Kilo`,base:`Product ${i}`,qty:1,unit:"Kilo",price:50+(i%100),cat:"Kirana",mrp:80+(i%100)});
- }
-}
-}
-let cart=[]; let curFrom=1,curTo=200; let filter="";
-
-function save(){localStorage.setItem('apla_products',JSON.stringify(all));}
-function render(){
- let q=document.getElementById('search').value.toLowerCase().trim();
- let list=[];
- if(q){ list=all.filter(p=>p.name.toLowerCase().includes(q) || p.no.toString()==q || p.unit.toLowerCase().includes(q)).slice(0,300); }
- else if(filter){ list=all.filter(p=>p.unit==filter).slice(curFrom-1,curFrom+199); }
- else { list=all.slice(curFrom-1,curTo).slice(0,200); }
- document.getElementById('info').textContent=q?`Search "${q}" - ${list.length} mile`:`Dikh raha #${curFrom} se #${curTo} ${filter?" - "+filter+" wale":""} | Total ${all.length}`;
- document.getElementById('main').innerHTML=list.map(p=>`<div class="card"><div class="num">#${p.no}</div><h3>${p.base}</h3><div class="unit">${p.qty} ${p.unit}</div><div style="font-size:10px;color:#aaa">${p.cat}</div><div class="price">₹${p.price} <span class="mrp">₹${p.mrp}</span></div><button onclick="addCart(${p.no})">Add #${p.no}</button></div>`).join('');
-}
-function setRange(f,t){curFrom=f;curTo=t;filter="";document.querySelectorAll('.rangeBar button').forEach(b=>b.classList.remove('active'));event.target.classList.add('active');render();}
-function filterUnit(u){filter=u;curFrom=1;render();}
-document.getElementById('search').addEventListener('input',render);
-
-function openAdmin(){document.getElementById('adminBox').style.display="block";}
-function closeAdmin(){document.getElementById('adminBox').style.display="none";}
-function quickAdd(base,qty,unit,price,cat){document.getElementById('pName').value=base;document.getElementById('pQty').value=qty;document.getElementById('pUnit').value=unit;document.getElementById('pPrice').value=price;document.getElementById('pCat').value=cat;addProduct();}
-function addProduct(){
- let base=document.getElementById('pName').value.trim();
- let qty=parseFloat(document.getElementById('pQty').value)||1;
- let unit=document.getElementById('pUnit').value;
- let price=parseFloat(document.getElementById('pPrice').value)||0;
- let cat=document.getElementById('pCat').value;
- if(!base||!price){alert("Naam aur Price bharo");return;}
- let no=all.length+1;
- let name=`${base} - ${qty} ${unit}`;
- all.push({no,name,base,qty,unit,price,cat,mrp:price+20});
- save(); closeAdmin(); curFrom=no; curTo=no+199; render();
- alert(`Ho gaya! #${no} - ${name} - ₹${price} add ho gaya!`);
-}
-
-function addCart(no){let p=all.find(x=>x.no==no);cart.push(p);document.getElementById('cartCount').textContent=cart.length;}
-function openCart(){if(cart.length==0){alert("Pehle add karo");return;}let html="";let total=0;cart.forEach((p,i)=>{total+=p.price;html+=`<div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid #eee"><span>#${p.no} ${p.name} ₹${p.price}</span><span onclick="cart.splice(${i},1);document.getElementById('cartCount').textContent=cart.length;openCart()" style="color:red;font-weight:bold">X</span></div>`;});html+=`<b>Total: ₹${total}</b>`;document.getElementById('cartItems').innerHTML=html;document.getElementById('cartBox').style.display="block";}
-function closeCart(){document.getElementById('cartBox').style.display="none";}
-function sendWA(){let n=document.getElementById('cName').value.trim(),ph=document.getElementById('cPhone').value.trim(),ad=document.getElementById('cAddr').value.trim();if(!n||!ph||!ad){alert("Naam Phone Address bharo");return;}let list=cart.map((p,i)=>`${i+1}. #${p.no} ${p.name} ₹${p.price}`).join("%0A");let total=cart.reduce((s,p)=>s+p.price,0);let msg=`*APLA DUKAN ORDER*%0A%0AName: ${n}%0APhone: ${ph}%0AAddress: ${ad}%0A%0A${list}%0A%0ATotal: ₹${total}%0A%0A1,51,000 System - 7415698590`;window.open(`https://wa.me/917415698590?text=${msg}`,"_blank");}
-render();
-</script>
-</body>
-                                                                                                                                                                                         </html>
+for(var i=1;i<=151000;i++){
+ var b=bases[i % bases.length];
+ var name, qty=b[1], unit=b[2], price, icon=b[5], cat=b[4];
+ if(i==191){ name="Parachute Tel 500ML SPECIAL"; qty=500; unit="ML"; price=23; icon="🥥🔥"; cat="Cosmetics"; }
+ else if(i==192){ name="Parachute Tel 1 Liter"; qty=1; unit="Liter"; price=250; icon="🥥"; cat="Cosmetics"; }
+ else if(i==193){ name
