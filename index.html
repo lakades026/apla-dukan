@@ -3,121 +3,108 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>APLA DUKAN - 1,51,000 Products | Netflix Style</title>
+<title>APLA DUKAN - Number Wise 1,51,000</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}body{background:#0f0f0f;color:#fff;font-family:Arial}
-.top{position:sticky;top:0;z-index:99;background:#000;padding:10px 15px;display:flex;gap:10px;align-items:center;border-bottom:2px solid #ffd700}
-.top h1{color:#ffd700;font-size:20px;white-space:nowrap}
-.search{flex:1;background:#222;border:1px solid #444;border-radius:20px;padding:10px 15px;color:#fff;width:100%}
-.cart{position:relative;background:#ffd700;color:#000;padding:8px 15px;border-radius:20px;font-weight:bold;cursor:pointer}
-.cart span{background:red;color:#fff;border-radius:50%;padding:2px 6px;position:absolute;top:-8px;right:-5px;font-size:12px}
-.banner{background:linear-gradient(90deg,#000,#b8860b);padding:15px;text-align:center;color:#ffd700}
-.cat-bar{display:flex;gap:8px;overflow:auto;padding:12px;background:#1a1a1a;white-space:nowrap}
-.cat-bar button{padding:8px 16px;border-radius:20px;border:1px solid #ffd700;background:#000;color:#ffd700;cursor:pointer}
-.cat-bar button.active{background:#ffd700;color:#000}
-.row-title{padding:15px 15px 5px;color:#ffd700;font-size:18px}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:10px 15px}
-@media(min-width:600px){.grid{grid-template-columns:1fr 1fr 1fr 1fr}}
-.card{background:#1f1f1f;border-radius:10px;overflow:hidden;border:1px solid #333}
-.card img{width:100%;height:120px;object-fit:cover;background:#222}
-.card .info{padding:8px}
-.card h3{font-size:13px;height:32px;overflow:hidden}
-.price{color:#ffd700;font-weight:bold}
-.mrp{color:#888;text-decoration:line-through;font-size:12px}
-.card button{width:100%;margin-top:6px;background:#ffd700;border:none;padding:7px;border-radius:5px;font-weight:bold;cursor:pointer}
-.footer{padding:20px;text-align:center;background:#000;color:#888;margin-top:20px}
-#cartBox{position:fixed;bottom:0;left:0;right:0;background:#fff;color:#000;max-height:85vh;overflow:auto;display:none;z-index:200;border-radius:15px 15px 0 0;padding:15px}
-#cartBox h2{color:#000}
-.inp{width:100%;padding:10px;margin:6px 0;border:1px solid #ccc;border-radius:5px}
+.top{position:sticky;top:0;z-index:99;background:#000;padding:10px;display:flex;gap:8px;align-items:center;border-bottom:2px solid #ffd700;flex-wrap:wrap}
+.top h1{color:#ffd700;font-size:18px}
+.search{flex:1;min-width:140px;background:#222;border:1px solid #555;border-radius:20px;padding:9px 12px;color:#fff}
+.rangeBox{background:#1a1a1a;padding:10px;display:flex;gap:6px;flex-wrap:wrap;align-items:center;border-bottom:1px solid #333}
+.rangeBox input{width:80px;padding:7px;border-radius:5px;border:1px solid #555;background:#222;color:#fff}
+.rangeBox button{padding:7px 10px;border-radius:5px;border:1px solid #ffd700;background:#000;color:#ffd700;cursor:pointer}
+.rangeBox button.active{background:#ffd700;color:#000}
+.cartBtn{background:#ffd700;color:#000;padding:8px 14px;border-radius:20px;font-weight:bold;cursor:pointer}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:10px}
+.card{background:#1e1e1e;border:1px solid #333;border-radius:8px;padding:10px;position:relative}
+.num{position:absolute;top:4px;left:6px;background:#ffd700;color:#000;font-size:10px;font-weight:bold;padding:2px 5px;border-radius:10px}
+.card h3{font-size:13px;margin-top:14px;min-height:32px}
+.cat{font-size:10px;color:#aaa}
+.price{color:#ffd700;font-weight:bold;margin:4px 0}
+.mrp{color:#888;text-decoration:line-through;font-size:11px}
+.card button{width:100%;background:#ffd700;border:none;padding:7px;border-radius:5px;font-weight:bold;cursor:pointer;margin-top:4px}
+#cartBox{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.95);z-index:999;display:none;padding:10px;overflow:auto}
+#cartInner{background:#fff;color:#000;border-radius:12px;padding:15px;max-width:500px;margin:10px auto}
+.inp{width:100%;padding:11px;margin:6px 0;border:1px solid #ccc;border-radius:6px}
 </style>
 </head>
 <body>
 <div class="top">
 <h1>APLA DUKAN</h1>
-<input id="search" class="search" placeholder="1,51,000 me se khojo... Atta, Tel, Shampoo">
-<div class="cart" onclick="openCart()">🛒 <b id="cartCount">0</b></div>
+<input id="search" class="search" placeholder="Number ya naam khojo...">
+<div class="cartBtn" onclick="openCart()">🛒 <span id="cartCount">0</span></div>
 </div>
-<div class="banner">
-<b>DIWALI DHAMAKA - All Companies Se Sasta - Murgud</b><br>
-1,51,000 Products • WhatsApp: 7415698590
+
+<div class="rangeBox">
+<span style="font-size:12px;color:#ffd700">Number Wise Dekho:</span>
+<button onclick="setRange(1,1000)" class="active">1-1000</button>
+<button onclick="setRange(1001,5000)">1001-5K</button>
+<button onclick="setRange(5001,25000)">5K-25K</button>
+<button onclick="setRange(25001,50000)">25K-50K</button>
+<button onclick="setRange(50001,100000)">50K-1L</button>
+<button onclick="setRange(100001,151000)">1L-1.51L</button>
+<span style="font-size:12px">Is No se:</span><input id="fromNo" type="number" placeholder="1">
+<span style="font-size:12px">Us No tak:</span><input id="toNo" type="number" placeholder="151000">
+<button onclick="customRange()" style="background:#25D366;color:#fff;border-color:#25D366">Go</button>
 </div>
-<div class="cat-bar" id="catBar"></div>
-<div id="main"></div>
+
+<div style="background:#ffd700;color:#000;text-align:center;padding:6px;font-size:12px;font-weight:bold" id="infoBar">Total 1,51,000 Products - Abhi 1 se 1000 dikh rahe hai</div>
+
+<div id="main" class="grid"></div>
 
 <div id="cartBox">
-<h2>🛒 Aapka Order (<span id="c2">0</span>)</h2>
+<div id="cartInner">
+<h2>🛒 Order List</h2>
 <div id="cartItems"></div>
-<input id="custName" class="inp" placeholder="Aapka Naam">
-<input id="custPhone" class="inp" placeholder="Phone Number">
-<input id="custAddr" class="inp" placeholder="Gaon / Address - Murgud">
-<button onclick="sendWA()" style="width:100%;background:#25D366;color:white;padding:12px;border:none;border-radius:8px;font-weight:bold;font-size:16px">WhatsApp Pe Order Bhejo - 7415698590</button>
-<button onclick="closeCart()" style="width:100%;margin-top:8px;padding:8px">Band Karo</button>
+<input id="cName" class="inp" placeholder="Aapka Naam *">
+<input id="cPhone" class="inp" placeholder="Phone *">
+<input id="cAddr" class="inp" placeholder="Address / Gaon *">
+<div style="display:flex;gap:6px;margin:6px 0"><label style="flex:1;border:1px solid #ccc;padding:8px;border-radius:5px;text-align:center"><input type="radio" name="pay" value="COD" checked> COD</label><label style="flex:1;border:1px solid #ccc;padding:8px;border-radius:5px;text-align:center"><input type="radio" name="pay" value="Online"> Online</label></div>
+<button onclick="sendWA()" style="width:100%;background:#25D366;color:#fff;padding:13px;border:none;border-radius:8px;font-weight:bold">WhatsApp Pe Bhejo - 7415698590</button>
+<button onclick="closeCart()" style="width:100%;margin-top:8px;padding:9px;background:#eee;border:none;border-radius:8px">Band Karo</button>
+</div>
 </div>
 
-<div class="footer">APLA DUKAN - Murgud - Phone: 7415698590 - 1,51,000 Items System</div>
-
 <script>
-const cats=["All","Kirana","Cosmetics","Mobile","Home","Bartan","Kapda","Masala","Biscuit","Cold Drink"];
-const baseProducts=[
-["Aashirvaad Atta 10kg",420,480,"Kirana"],["Fortune Tel 1L",135,155,"Kirana"],["Tata Salt 1kg",28,32,"Kirana"],["Parle-G Biscuit",10,12,"Biscuit"],
-["Head & Shoulders Shampoo",180,210,"Cosmetics"],["Ponds Powder",95,110,"Cosmetics"],["Colgate Paste",55,65,"Cosmetics"],
-["Mobile Charger Fast",199,399,"Mobile"],["Earbuds Bluetooth",499,999,"Mobile"],["Bartan Set Steel",899,1499,"Bartan"],
-["Laxmi Saree",650,950,"Kapda"],["MDH Masala",42,50,"Masala"],["Coca Cola 2L",85,95,"Cold Drink"]
-];
-let allProducts=[];
-for(let i=0;i<12500;i++){ // 12.5k * 12 = 1.5 Lakh logic
-  baseProducts.forEach((p,idx)=>{
-    allProducts.push({id:i+"-"+idx,name:p[0]+" "+(i>0?i:""),price:p[1]+(i%5)*2,mrp:p[2],cat:p[3],img:`https://picsum.photos/seed/${i}${idx}/200/200`});
-  });
+const cats=["Kirana","Cosmetics","Mobile","Bartan","Kapda","Masala","Biscuit","Cold Drink"];
+const baseNames=["Aashirvaad Atta","Fortune Tel","Tata Salt","Sugar","Shampoo","Ponds Powder","Colgate","Dettol Soap","Fast Charger","Earbuds","Mobile Cover","Steel Bartan","Saree","MDH Masala","Parle-G","Coca Cola","Chai Patti","Surf Excel","Maggi","Good Day"];
+let all=[];
+for(let i=1;i<=151000;i++){
+ let name=baseNames[i%baseNames.length]+" "+(Math.floor(i/baseNames.length)+1);
+ let cat=cats[i%cats.length];
+ let price=20+(i%500);
+ all.push({no:i,name:name,cat:cat,price:price,mrp:price+30,id:"P"+i});
 }
-let cart=[];
-let activeCat="All";
-const catBar=document.getElementById("catBar");
-cats.forEach(c=>{
-  let b=document.createElement("button");b.textContent=c;b.onclick=()=>{activeCat=c;document.querySelectorAll('.cat-bar button').forEach(x=>x.classList.remove('active'));b.classList.add('active');render();};if(c=="All")b.classList.add('active');catBar.appendChild(b);
-});
-const search=document.getElementById("search");
-search.addEventListener("input",render);
+let cart=[]; let curFrom=1, curTo=1000;
+function setRange(f,t){curFrom=f;curTo=t;document.querySelectorAll('.rangeBox button').forEach(b=>b.classList.remove('active'));event.target.classList.add('active');render();}
+function customRange(){let f=parseInt(document.getElementById('fromNo').value)||1;let t=parseInt(document.getElementById('toNo').value)||1000;if(f<1)f=1;if(t>151000)t=151000;curFrom=f;curTo=t;render();}
+const search=document.getElementById('search');
+search.addEventListener('input',render);
 function render(){
-  let q=search.value.toLowerCase();
-  let filtered=allProducts.filter(p=>{
-    return (activeCat=="All"||p.cat==activeCat) && p.name.toLowerCase().includes(q);
-  }).slice(0,100); // Netflix jaise pehle 100 dikhao, search se aur ayega
-  let html="";
-  let grouped={};
-  filtered.forEach(p=>{if(!grouped[p.cat])grouped[p.cat]=[];grouped[p.cat].push(p);});
-  for(let cat in grouped){
-    html+=`<div class="row-title">${cat} - ${cat=="All"?"":grouped[cat].length} Items</div><div class="grid">`;
-    grouped[cat].forEach(p=>{
-      html+=`<div class="card"><img src="${p.img}" loading="lazy"><div class="info"><h3>${p.name}</h3><div class="price">₹${p.price} <span class="mrp">₹${p.mrp}</span></div><button onclick="addCart('${p.id}')">Add to Cart</button></div></div>`;
-    });
-    html+=`</div>`;
-  }
-  if(filtered.length==0)html="<p style='padding:20px;text-align:center'>Kuch nahi mila - dusra naam likho</p>";
-  document.getElementById("main").innerHTML=html+`<p style="text-align:center;padding:15px;color:#ffd700">Showing ${filtered.length} of 1,51,000 Products - Search karo to aur dikhega</p>`;
+ let q=search.value.toLowerCase().trim();
+ let filtered=[];
+ if(q && !isNaN(q)){ let num=parseInt(q); if(num>=1 && num<=151000){ filtered=[all[num-1]]; curFrom=num; curTo=num; } }
+ else if(q){ filtered=all.filter(p=>p.name.toLowerCase().includes(q) || p.no.toString().includes(q)).slice(0,500); }
+ else { filtered=all.slice(curFrom-1,curTo); filtered=filtered.slice(0,200); }
+ document.getElementById('infoBar').textContent=q?`Search: "${q}" - ${filtered.length} mile | Total 1,51,000`:`Dikh rahe hai #${curFrom} se #${Math.min(curTo,curFrom+199)} tak | Total 1,51,000 Products - Range badlo`;
+ document.getElementById('main').innerHTML=filtered.map(p=>`<div class="card"><div class="num">#${p.no}</div><h3>${p.name}</h3><div class="cat">${p.cat} - Item No: ${p.no}</div><div class="price">₹${p.price} <span class="mrp">₹${p.mrp}</span></div><button onclick="addCart(${p.no})">Add #${p.no}</button></div>`).join('');
 }
-function addCart(id){
-  let p=allProducts.find(x=>x.id==id);
-  cart.push(p);
-  document.getElementById("cartCount").textContent=cart.length;
-  document.getElementById("c2").textContent=cart.length;
-  alert(p.name+" Cart me add hua!");
-}
+function addCart(no){let p=all[no-1];cart.push(p);document.getElementById('cartCount').textContent=cart.length;}
 function openCart(){
-  if(cart.length==0){alert("Pehle product add karo!");return;}
-  let h="";let total=0;cart.forEach((p,i)=>{total+=p.price;h+=`<div style="display:flex;justify-content:space-between;padding:6px;border-bottom:1px solid #eee"><span>${p.name} - ₹${p.price}</span><span onclick="cart.splice(${i},1);openCart();document.getElementById('cartCount').textContent=cart.length" style="color:red;cursor:pointer">X</span></div>`;});
-  h+=`<b>Total: ₹${total}</b>`;document.getElementById("cartItems").innerHTML=h;
-  document.getElementById("cartBox").style.display="block";
+ if(cart.length==0){alert("Pehle Add karo bhai!");return;}
+ let html="";let total=0;cart.forEach((p,i)=>{total+=p.price;html+=`<div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid #eee"><span>#${p.no} - ${p.name} - ₹${p.price}</span><span onclick="cart.splice(${i},1);document.getElementById('cartCount').textContent=cart.length;openCart()" style="color:red;font-weight:bold;cursor:pointer"> X</span></div>`;});
+ html+=`<b>Total: ₹${total} | ${cart.length} Items | Numbers: #${cart.map(p=>p.no).join(', #')}</b>`;
+ document.getElementById('cartItems').innerHTML=html;document.getElementById('cartBox').style.display="block";
 }
-function closeCart(){document.getElementById("cartBox").style.display="none";}
+function closeCart(){document.getElementById('cartBox').style.display="none";}
 function sendWA(){
-  let name=document.getElementById("custName").value||"Customer";
-  let phone=document.getElementById("custPhone").value||"";
-  let addr=document.getElementById("custAddr").value||"Murgud";
-  let list=cart.map(p=>p.name+" (₹"+p.price+")").join("%0A");
-  let total=cart.reduce((s,p)=>s+p.price,0);
-  let msg=`*APLA DUKAN ORDER - 1,51,000 System*%0A%0AName: ${name}%0APhone: ${phone}%0AAddress: ${addr}%0A%0AOrder:%0A${list}%0A%0ATotal: ₹${total}%0A%0AMurgud - All Companies Se Sasta`;
-  window.open(`https://wa.me/917415698590?text=${msg}`,"_blank");
+ let n=document.getElementById('cName').value.trim();let ph=document.getElementById('cPhone').value.trim();let ad=document.getElementById('cAddr').value.trim();
+ if(!n||!ph||!ad){alert("Naam Phone Address bharo");return;}
+ let pay=document.querySelector('input[name="pay"]:checked').value;
+ let list=cart.map((p,i)=>`${i+1}. #${p.no} - ${p.name} - ₹${p.price}`).join("%0A");
+ let total=cart.reduce((s,p)=>s+p.price,0);
+ let nums=cart.map(p=>p.no).join(', ');
+ let msg=`*APLA DUKAN - NUMBER WISE ORDER*%0A%0A*Customer:* ${n}%0APhone: ${ph}%0AAddress: ${ad}%0APayment: ${pay}%0A%0A*Product Numbers:* ${nums}%0A%0A*Order Detail:*%0A${list}%0A%0A*Total: ₹${total}*%0A*Total Items: ${cart.length}*%0A%0A1,51,000 System - Murgud - 7415698590`;
+ window.open(`https://wa.me/917415698590?text=${msg}`,"_blank");
 }
 render();
 </script>
