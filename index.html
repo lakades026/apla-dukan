@@ -2,153 +2,57 @@
 <html lang="hi">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>APLA DUKAN - 1,51,000 Products</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>APLA DUKAN</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 body{background:#000;color:#fff;font-family:Arial}
 .top{position:sticky;top:0;z-index:99;background:#000;padding:10px;display:flex;gap:8px;align-items:center;border-bottom:2px solid red}
-.logo{color:red;font-size:20px;font-weight:900;line-height:18px}
-.logo span{font-size:20px}
-.search{flex:1;padding:10px 14px;border-radius:25px;background:#222;border:1px solid #555;color:#fff;font-size:14px}
-.cart-btn{background:red;color:#fff;padding:8px 16px;border:none;border-radius:25px;font-weight:bold;font-size:14px}
-.bar{padding:10px;background:#111;display:flex;gap:8px;overflow:auto;white-space:nowrap}
-.bar button{padding:8px 14px;background:#333;color:#fff;border:none;border-radius:20px;font-size:13px}
-.bar button.active{background:#fff;color:#000;font-weight:bold}
-.yellow{background:yellow;color:#000;text-align:center;padding:8px;font-weight:bold;font-size:12px}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:10px;min-height:500px}
-.card{background:#1e1e1e;border-radius:12px;padding:10px;border:1px solid #333}
-.card .no{font-size:9px;background:red;color:#fff;padding:2px 6px;border-radius:10px;display:inline-block}
-.card .icon{font-size:32px;text-align:center;margin:6px 0}
-.card h4{font-size:13px;margin:4px 0;height:32px;overflow:hidden}
-.unit{background:#333;color:#ff0;font-size:10px;padding:2px 6px;border-radius:4px;display:inline-block;border:1px solid #555}
-.price{color:#0f0;font-weight:bold;font-size:16px;margin-top:5px}
-.card button{width:100%;padding:8px;background:#fff;color:#000;border:none;border-radius:6px;font-weight:bold;margin-top:8px}
-.next{width:94%;margin:15px auto;display:block;padding:14px;background:red;color:#fff;border:none;border-radius:12px;font-weight:bold;font-size:16px}
-.modal{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.95);z-index:1000;padding:12px;overflow:auto;display:none}
-.box{background:#fff;color:#000;max-width:420px;margin:20px auto;border-radius:12px;padding:15px}
-.steps{display:flex;gap:5px;margin:10px 0}.steps div{flex:1;padding:6px;text-align:center;border-radius:20px;font-size:11px;font-weight:bold;background:#eee}
-.steps div.active{background:#000;color:#fff}.steps div.done{background:#0a0;color:#fff}
-.inp{width:100%;padding:11px;margin:6px 0;border:1px solid #ccc;border-radius:8px;font-size:14px}
-.payOpt{padding:12px;border:2px solid #ddd;border-radius:10px;margin:6px 0;cursor:pointer}
-.payOpt.sel{border-color:red;background:#fff0f0}
-.btn2{width:100%;padding:13px;background:red;color:#fff;border:none;border-radius:8px;font-weight:bold;margin-top:10px}
-.btn3{width:100%;padding:10px;background:#eee;border:none;border-radius:8px;margin-top:8px}
+.logo{color:red;font-size:18px;font-weight:900;line-height:17px}
+.search{flex:1;padding:10px 12px;border-radius:20px;background:#222;border:1px solid #555;color:#fff}
+.cart{ background:red;color:#fff;padding:8px 14px;border:none;border-radius:20px;font-weight:bold}
+.bar{padding:8px;background:#111;display:flex;gap:6px;overflow:auto}
+.bar button{padding:7px 12px;background:#333;color:#fff;border:none;border-radius:20px;font-size:12px;white-space:nowrap}
+.bar button.active{background:#fff;color:#000}
+.yellow{background:yellow;color:#000;text-align:center;padding:7px;font-weight:bold;font-size:11px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:10px}
+.card{background:#222;border-radius:10px;padding:9px;border:1px solid #333}
+.card .no{font-size:8px;background:red;color:#fff;padding:2px 5px;border-radius:8px}
+.card .ico{font-size:28px;text-align:center;margin:5px 0}
+.card h4{font-size:12px;height:28px;overflow:hidden}
+.unit{font-size:9px;background:#444;color:#ff0;padding:2px 5px;border-radius:4px;border:1px solid #666}
+.price{color:#0f0;font-weight:bold;margin-top:4px}
+.card button{width:100%;padding:7px;background:#fff;color:#000;border:none;border-radius:5px;font-weight:bold;margin-top:6px;font-size:12px}
+.next{width:94%;margin:12px auto;display:block;padding:13px;background:red;color:#fff;border:none;border-radius:10px;font-weight:bold}
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.96);z-index:1000;padding:12px;overflow:auto;display:none}
+.box{background:#fff;color:#000;max-width:400px;margin:15px auto;border-radius:12px;padding:14px}
+.steps{display:flex;gap:4px;margin:8px 0}.steps div{flex:1;padding:5px;text-align:center;border-radius:15px;font-size:10px;font-weight:bold;background:#eee}
+.steps div.active{background:#000;color:#fff}.steps div.done{background:green;color:#fff}
+.inp{width:100%;padding:10px;margin:5px 0;border:1px solid #ccc;border-radius:7px}
+.pay{padding:10px;border:2px solid #ddd;border-radius:8px;margin:5px 0}.pay.sel{border-color:red;background:#fff0f0}
+.btn2{width:100%;padding:12px;background:red;color:#fff;border:none;border-radius:8px;font-weight:bold;margin-top:8px}
+.btn3{width:100%;padding:9px;background:#eee;border:none;border-radius:7px;margin-top:6px}
 </style>
 </head>
 <body>
 <div class="top">
 <div class="logo">APLA<br>DUKAN</div>
 <input id="search" class="search" placeholder="Search #191, 500 ML, Kilo...">
-<button class="cart-btn" onclick="openCart()">Cart <span id="cnt">0</span></button>
+<button class="cart" onclick="openCart()">Cart <span id="cnt">0</span></button>
 </div>
-<div class="bar">
-<button onclick="filterUnit('ALL',this)" class="active">ALL</button>
-<button onclick="filterUnit('ML',this)">ML Wale</button>
-<button onclick="filterUnit('Liter',this)">Liter</button>
-<button onclick="filterUnit('Kilo',this)">Kilo Wale</button>
-<button onclick="filterUnit('Pieces',this)">Pieces Wale</button>
+<div class="bar" id="filters">
+<button class="active" onclick="setFilter('ALL',this)">ALL</button>
+<button onclick="setFilter('ML',this)">ML Wale</button>
+<button onclick="setFilter('Liter',this)">Liter</button>
+<button onclick="setFilter('Kilo',this)">Kilo Wale</button>
+<button onclick="setFilter('Pieces',this)">Pieces Wale</button>
 </div>
 <div class="yellow">Order > Address > Payment > WhatsApp | 1,51,000 Products</div>
-
 <div id="grid" class="grid"></div>
-<button class="next" onclick="loadMore()">👇 Aur Dikhao ( <span id="shown">0</span> / <span id="total">151000</span> )</button>
+<button class="next" id="moreBtn" onclick="more()">👇 Aur Dikhao - <span id="sh">0</span> dikhe</button>
 
-<div id="checkout" class="modal">
+<div id="chk" class="modal">
 <div class="box">
-<div style="display:flex;justify-content:space-between"><h2 id="stepTitle">Cart</h2><b onclick="closeAll()" style="cursor:pointer;font-size:22px">X</b></div>
+<div style="display:flex;justify-content:space-between"><h3 id="t">Cart</h3><b onclick="closeChk()" style="font-size:20px">X</b></div>
 <div class="steps"><div id="s1" class="active">1.Cart</div><div id="s2">2.Address</div><div id="s3">3.Payment</div><div id="s4">4.WA</div></div>
-<div id="step1"><div id="cartList" style="margin:10px 0;max-height:300px;overflow:auto"></div><button class="btn2" onclick="goAddress()">Order Kare - Address Bhare →</button></div>
-<div id="step2" style="display:none">
-<input id="cName" class="inp" placeholder="Aapka Naam *">
-<input id="cMobile" class="inp" placeholder="Mobile Number *">
-<textarea id="cAddr" class="inp" placeholder="Pura Address *"></textarea>
-<input id="cPin" class="inp" placeholder="Pincode *">
-<input id="cLand" class="inp" placeholder="Landmark">
-<button class="btn2" onclick="goPayment()">Address Save - Payment Kare →</button>
-<button class="btn3" onclick="showStep(1)">← Wapas Cart</button>
-</div>
-<div id="step3" style="display:none">
-<p style="font-weight:bold">Payment Method:</p>
-<div class="payOpt sel" onclick="selPay(this,'COD')"><b>💵 Cash on Delivery (COD)</b><br><small>Ghar aane par paisa</small></div>
-<div class="payOpt" onclick="selPay(this,'UPI')"><b>📱 UPI Payment</b><br><small>7415698590@ybl</small></div>
-<div id="upiBox" style="display:none;background:#f0f0f0;padding:10px;border-radius:8px;margin:8px 0"><input id="txnId" class="inp" placeholder="Transaction ID / UTR"></div>
-<button class="btn2" onclick="goWhatsappStep()">Payment Confirm - WhatsApp Bheje →</button>
-<button class="btn3" onclick="showStep(2)">← Wapas Address</button>
-</div>
-<div id="step4" style="display:none">
-<div style="background:#e8ffe8;padding:10px;border-radius:8px;border:1px solid #0a0">✅ Address + Payment Done! Ab WhatsApp pe jayega.</div>
-<div id="finalSummary" style="margin:10px 0;font-size:13px;background:#f9f9f9;padding:10px;border-radius:8px"></div>
-<button class="btn2" style="background:#25D366" onclick="sendWA()">✅ WhatsApp Pe Bheje</button>
-<button class="btn3" onclick="showStep(3)">← Wapas Payment</button>
-</div>
-</div>
-</div>
-
-<script>
-var all=[]; var cart=[]; var start=0; var step=100; var filtered=null; var curUnit='ALL'; var payMethod='COD';
-var baseData=[
-["Parachute Tel",500,"ML",23,"🥥"],
-["Fortune Sarso Tel",1,"Liter",135,"🛢️"],
-["Toor Dal",1,"Kilo",120,"🌾"],
-["Sugar",1,"Kilo",42,"🧂"],
-["Kaju Katli",8,"Pieces",250,"🍬"],
-["Maggi",8,"Pieces",96,"🍜"],
-["Coca Cola",2,"Liter",90,"🥤"],
-["Saffola Oil",1,"Liter",180,"🛢️"],
-["Aata",5,"Kilo",210,"🌾"],
-["Chai Patti",250,"ML",85,"☕"]
-];
-for(var i=1;i<=151000;i++){
-var b=baseData[i%baseData.length];
-var name=b[0], qty=b[1], unit=b[2], price=b[3]+(i%20), icon=b[4];
-if(i==191){name="Parachute Tel";qty=500;unit="ML";price=23;icon="🥥";}
-all.push({no:i, base:name, full:name+" - "+qty+" "+unit, qty:qty, unit:unit, price:price, icon:icon});
-}
-document.getElementById('total').innerHTML=all.length;
-
-function getData(){return filtered ? filtered : all;}
-
-function renderCards(from,to){
-var data=getData();
-var grid=document.getElementById('grid');
-var html="";
-for(var i=from;i<to && i<data.length;i++){
-var p=data[i];
-html+='<div class="card"><div class="no">#'+p.no+'</div><div class="icon">'+p.icon+'</div><h4>'+p.base+'</h4><div class="unit">'+p.qty+' '+p.unit+'</div><div class="price">₹'+p.price+'</div><button onclick="addToCart('+p.no+')">Add #'+p.no+'</button></div>';
-}
-grid.insertAdjacentHTML('beforeend', html);
-document.getElementById('shown').innerHTML=to>data.length?data.length:to;
-}
-
-function initialLoad(){
-document.getElementById('grid').innerHTML="";
-start=0;
-renderCards(0,100);
-start=100;
-}
-function loadMore(){
-var data=getData();
-var nextEnd=start+step;
-if(nextEnd>data.length) nextEnd=data.length;
-renderCards(start,nextEnd);
-start=nextEnd;
-}
-
-function filterUnit(u, btn){
-curUnit=u;
-document.querySelectorAll('.bar button').forEach(b=>b.classList.remove('active'));
-btn.classList.add('active');
-if(u=='ALL'){filtered=null;}else{filtered=all.filter(p=>p.unit==u);}
-document.getElementById('grid').innerHTML="";
-start=0;
-var data=getData();
-renderCards(0,100);
-start=100;
-}
-
-document.getElementById('search').addEventListener('input',function(){
-var q=this.value.trim().toLowerCase();
-if(q==""){filtered=null;initialLoad();return;}
-if(!isNaN(q)){var n=parseInt(q);if(n>=1&&n<=151000){filtered=[all[n-1]];document.getElementById('grid').innerHTML="";renderCards(0,1);start=1;return;}}
-var res=[];for(var i=0;i<all.length;i++){if(all[i].full.toLowerCase().indexOf(q
+<div id="p1"><div id="clist"
