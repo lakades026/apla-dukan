@@ -1,120 +1,93 @@
 <!DOCTYPE html>
 <html lang="hi"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>APLA DUKAN - 1,51,000 Products</title>
+<title>APLA DUKAN - 1,51,000</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}body{background:#000;color:#fff;font-family:Arial}
 .top{position:sticky;top:0;z-index:99;background:#000;padding:10px;display:flex;gap:8px;align-items:center;border-bottom:2px solid red}
-.logo{color:red;font-weight:900;font-size:18px;line-height:17px}
-.search{flex:1;padding:10px 12px;border-radius:20px;background:#222;border:1px solid #555;color:#fff}
+.logo{color:red;font-weight:900;font-size:18px;line-height:17px}.search{flex:1;padding:10px 12px;border-radius:20px;background:#222;border:1px solid #555;color:#fff}
 .cartBtn{background:red;color:#fff;padding:8px 14px;border:none;border-radius:20px;font-weight:bold}
-.bar{padding:8px;background:#111;display:flex;gap:6px;overflow:auto}
-.bar button{padding:7px 12px;background:#333;color:#fff;border:none;border-radius:20px;font-size:12px;white-space:nowrap}
-.bar button.active{background:#fff;color:#000}
+.bar{padding:8px;background:#111;display:flex;gap:6px;overflow:auto}.bar button{padding:7px 12px;background:#333;color:#fff;border:none;border-radius:20px;font-size:12px;white-space:nowrap}.bar button.active{background:#fff;color:#000}
 .yellow{background:yellow;color:#000;text-align:center;padding:7px;font-weight:bold;font-size:11px}
 .grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:10px}
-.card{background:#222;border-radius:10px;padding:9px;border:1px solid #333}
-.card .no{font-size:8px;background:red;color:#fff;padding:2px 6px;border-radius:8px}
-.card .ico{font-size:28px;text-align:center;margin:5px 0}
-.card h4{font-size:12px;height:32px;overflow:hidden}
-.unit{font-size:9px;background:#444;color:#ff0;padding:2px 5px;border-radius:4px;border:1px solid #666}
-.price{color:#0f0;font-weight:bold;margin-top:4px}
+.card{background:#222;border-radius:10px;padding:9px;border:1px solid #333}.no{font-size:8px;background:red;color:#fff;padding:2px 6px;border-radius:8px}.ico{font-size:28px;text-align:center;margin:5px 0}
+h4{font-size:12px;height:32px;overflow:hidden}.unit{font-size:9px;background:#444;color:#ff0;padding:2px 5px;border-radius:4px;border:1px solid #666}.price{color:#0f0;font-weight:bold;margin-top:4px}
 .card button{width:100%;padding:7px;background:#fff;color:#000;border:none;border-radius:5px;font-weight:bold;margin-top:6px;font-size:12px}
-.next{width:94%;margin:12px auto;display:block;padding:13px;background:red;color:#fff;border:none;border-radius:10px;font-weight:bold}
-.modal{position:fixed;inset:0;background:rgba(0,0,0,.96);z-index:1000;padding:12px;overflow:auto;display:none}
-.box{background:#fff;color:#000;max-width:400px;margin:15px auto;border-radius:12px;padding:14px}
-.steps{display:flex;gap:4px;margin:8px 0}.steps div{flex:1;padding:5px;text-align:center;border-radius:15px;font-size:10px;font-weight:bold;background:#eee}
-.steps div.active{background:#000;color:#fff}.steps div.done{background:green;color:#fff}
-.inp{width:100%;padding:10px;margin:5px 0;border:1px solid #ccc;border-radius:7px}
-.pay{padding:10px;border:2px solid #ddd;border-radius:8px;margin:5px 0;cursor:pointer}.pay.sel{border-color:red;background:#fff0f0}
-.btn2{width:100%;padding:12px;background:red;color:#fff;border:none;border-radius:8px;font-weight:bold;margin-top:8px}
-.btn3{width:100%;padding:9px;background:#eee;border:none;border-radius:7px;margin-top:6px}
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.96);z-index:1000;padding:12px;overflow:auto;display:none}.box{background:#fff;color:#000;max-width:400px;margin:15px auto;border-radius:12px;padding:14px}
+.steps{display:flex;gap:4px;margin:8px 0}.steps div{flex:1;padding:5px;text-align:center;border-radius:15px;font-size:10px;font-weight:bold;background:#eee}.steps div.active{background:#000;color:#fff}.steps div.done{background:green;color:#fff}
+.inp{width:100%;padding:10px;margin:5px 0;border:1px solid #ccc;border-radius:7px}.pay{padding:10px;border:2px solid #ddd;border-radius:8px;margin:5px 0}.pay.sel{border-color:red;background:#fff0f0}
+.btn2{width:100%;padding:12px;background:red;color:#fff;border:none;border-radius:8px;font-weight:bold;margin-top:8px}.btn3{width:100%;padding:9px;background:#eee;border:none;border-radius:7px;margin-top:6px}
 </style></head><body>
-<div class="top"><div class="logo">APLA<br>DUKAN</div><input id="search" class="search" placeholder="Search Kaju Katli, #191, 500 ML, 10 ML..."><button class="cartBtn" onclick="openCart()">Cart <span id="cnt">0</span></button></div>
-<div class="bar" id="filters"><button class="active" onclick="setF('ALL',this)">ALL</button><button onclick="setF('ML',this)">10-500 ML</button><button onclick="setF('Liter',this)">Liter</button><button onclick="setF('Kilo',this)">Kilo/Gram</button><button onclick="setF('Pieces',this)">Pieces</button></div>
+<div class="top"><div class="logo">APLA<br>DUKAN</div><input id="search" class="search" placeholder="Kaju, #191, 500 ML..."><button class="cartBtn" onclick="openCart()">Cart <span id="cnt">0</span></button></div>
+<div class="bar" id="filters"><button class="active" onclick="setF('ALL',this)">ALL</button><button onclick="setF('ML',this)">ML</button><button onclick="setF('Liter',this)">Liter</button><button onclick="setF('Kilo',this)">Kilo/Gram</button><button onclick="setF('Pieces',this)">Pieces</button></div>
 <div class="yellow">Order > Address > Payment > WhatsApp | 1,51,000 Products</div>
 <div id="grid" class="grid"></div>
-<button class="next" onclick="loadMore()">👇 Aur Dikhao - <span id="sh">0</span> dikhe / 151000</button>
+<div id="loader" style="text-align:center;padding:15px;color:#888">Scroll karo - aur products automatic ayenge...</div>
 
 <div id="chk" class="modal"><div class="box">
-<div style="display:flex;justify-content:space-between"><h3>Checkout</h3><b onclick="closeChk()" style="font-size:20px;cursor:pointer">X</b></div>
+<div style="display:flex;justify-content:space-between"><h3>Checkout</h3><b onclick="closeChk()" style="font-size:22px">X</b></div>
 <div class="steps"><div id="s1" class="active">1.Order</div><div id="s2">2.Address</div><div id="s3">3.Payment</div><div id="s4">4.WA</div></div>
-<div id="p1"><div id="clist" style="max-height:250px;overflow:auto"></div><button class="btn2" onclick="show(2)">Order Kare - Address Bhare →</button></div>
-<div id="p2" style="display:none">
-<input id="nm" class="inp" placeholder="Naam *"><input id="mo" class="inp" placeholder="Mobile *"><textarea id="ad" class="inp" placeholder="Pura Address *"></textarea><input id="pin" class="inp" placeholder="Pincode *"><input id="lm" class="inp" placeholder="Landmark"><button class="btn2" onclick="goPay()">Save → Payment</button><button class="btn3" onclick="show(1)">← Cart</button></div>
-<div id="p3" style="display:none"><div class="pay sel" onclick="pick(this,'COD')"><b>💵 COD</b></div><div class="pay" onclick="pick(this,'UPI')"><b>📱 UPI - 7415698590@ybl</b></div><div id="ub" style="display:none"><input id="txn" class="inp" placeholder="UTR"></div><button class="btn2" onclick="goWA()">Confirm → WA</button><button class="btn3" onclick="show(2)">← Address</button></div>
+<div id="p1"><div id="clist"></div><button class="btn2" onclick="show(2)">Order Kare → Address</button></div>
+<div id="p2" style="display:none"><input id="nm" class="inp" placeholder="Naam *"><input id="mo" class="inp" placeholder="Mobile *"><textarea id="ad" class="inp" placeholder="Pura Address *"></textarea><input id="pin" class="inp" placeholder="Pincode *"><input id="lm" class="inp" placeholder="Landmark"><button class="btn2" onclick="goPay()">Save → Payment</button><button class="btn3" onclick="show(1)">← Cart</button></div>
+<div id="p3" style="display:none">
+<div class="pay sel" onclick="pick(this,'COD')"><b>💵 Cash on Delivery</b></div>
+<div class="pay" onclick="pick(this,'UPI')"><b>📱 UPI - lakde.sagar.wallet@phonepe</b><br><small>Ispe payment karke UTR dalo</small></div>
+<div id="ub" style="display:none"><input id="txn" class="inp" placeholder="UTR / Transaction ID *"></div>
+<button class="btn2" onclick="goWA()">Confirm → WhatsApp</button><button class="btn3" onclick="show(2)">← Address</button></div>
 <div id="p4" style="display:none"><div id="sum" style="background:#f5f5f5;padding:8px;border-radius:6px;margin:8px 0;font-size:12px"></div><button class="btn2" style="background:#25D366" onclick="sendWA()">✅ WhatsApp Pe Bhejo</button><button class="btn3" onclick="show(3)">← Payment</button></div>
 </div></div>
 
 <script>
-let cart=[], shown=0, per=80, curF='ALL', pay='COD';
-
-// 30 BASE PRODUCTS + ALL VARIANTS
-let products = [
-{n:"Parachute Tel", u:["10 ML","50 ML","100 ML","250 ML","500 ML","1 Liter"], i:"🥥", p:5},
-{n:"Kaju Katli", u:["4 Pieces","8 Pieces","12 Pieces","250 Gram","500 Gram","1 Kilo"], i:"🍬", p:50},
-{n:"Fortune Sarso Tel", u:["100 ML","250 ML","500 ML","1 Liter","2 Liter","5 Liter"], i:"🛢️", p:30},
-{n:"Sugar", u:["100 Gram","250 Gram","500 Gram","1 Kilo","2 Kilo","5 Kilo"], i:"🧂", p:10},
-{n:"Toor Dal", u:["100 Gram","250 Gram","500 Gram","1 Kilo","2 Kilo","5 Kilo"], i:"🌾", p:25},
-{n:"Maggi", u:["1 Pieces","2 Pieces","4 Pieces","8 Pieces","12 Pieces","16 Pieces"], i:"🍜", p:12},
-{n:"Coca Cola", u:["100 ML","250 ML","500 ML","750 ML","1 Liter","2 Liter"], i:"🥤", p:10},
-{n:"Saffola Oil", u:["100 ML","250 ML","500 ML","1 Liter","2 Liter","5 Liter"], i:"🫒", p:35},
-{n:"Aata", u:["500 Gram","1 Kilo","2 Kilo","5 Kilo","10 Kilo","25 Kilo"], i:"🌾", p:15},
-{n:"Chai Patti", u:["10 Gram","50 Gram","100 Gram","250 Gram","500 Gram","1 Kilo"], i:"☕", p:20},
-{n:"Besan", u:["100 Gram","250 Gram","500 Gram","1 Kilo","2 Kilo","5 Kilo"], i:"🌾", p:18},
-{n:"Haldiram Bhujia", u:["50 Gram","100 Gram","250 Gram","500 Gram","1 Kilo"], i:"🍿", p:15},
-{n:"Colgate", u:["10 Gram","50 Gram","100 Gram","150 Gram","250 Gram"], i:"🪥", p:10},
-{n:"Lifebuoy Soap", u:["1 Pieces","2 Pieces","3 Pieces","4 Pieces","6 Pieces"], i:"🧼", p:15},
-{n:"Head & Shoulder", u:["10 ML","50 ML","80 ML","180 ML","340 ML","650 ML"], i:"🧴", p:20},
-{n:"Kurkure", u:["10 Pieces","20 Pieces","1 Pieces","2 Pieces","5 Pieces"], i:"🍿", p:5}
+let cart=[],shown=0,per=60,curF='ALL',pay='COD';
+let products=[
+{n:"Parachute Tel",u:["10 ML","50 ML","100 ML","250 ML","500 ML","1 Liter"],i:"🥥",p:5},
+{n:"Kaju Katli",u:["4 Pieces","8 Pieces","12 Pieces","250 Gram","500 Gram","1 Kilo"],i:"🍬",p:30},
+{n:"Fortune Sarso Tel",u:["100 ML","250 ML","500 ML","1 Liter","2 Liter","5 Liter"],i:"🛢️",p:30},
+{n:"Sugar",u:["100 Gram","250 Gram","500 Gram","1 Kilo","2 Kilo","5 Kilo"],i:"🧂",p:10},
+{n:"Toor Dal",u:["100 Gram","250 Gram","500 Gram","1 Kilo","2 Kilo"],i:"🌾",p:25},
+{n:"Maggi",u:["1 Pieces","2 Pieces","4 Pieces","8 Pieces","12 Pieces"],i:"🍜",p:12},
+{n:"Coca Cola",u:["100 ML","250 ML","500 ML","1 Liter","2 Liter"],i:"🥤",p:10},
+{n:"Saffola Oil",u:["100 ML","250 ML","500 ML","1 Liter"],i:"🫒",p:35},
+{n:"Aata",u:["500 Gram","1 Kilo","2 Kilo","5 Kilo","10 Kilo"],i:"🌾",p:15},
+{n:"Chai Patti",u:["10 Gram","50 Gram","100 Gram","250 Gram","500 Gram"],i:"☕",p:20},
+{n:"Colgate",u:["10 Gram","50 Gram","100 Gram","150 Gram"],i:"🪥",p:10},
+{n:"Lifebuoy Soap",u:["1 Pieces","2 Pieces","3 Pieces","4 Pieces"],i:"🧼",p:15},
+{n:"Head & Shoulder",u:["10 ML","50 ML","80 ML","180 ML","340 ML"],i:"🧴",p:20}
 ];
-
 function getP(num){
- let pi = (num-1) % products.length;
- let vi = Math.floor((num-1)/products.length) % 20;
- let prod = products[pi];
- let unitStr = prod.u[vi % prod.u.length];
- let parts = unitStr.split(' ');
- let qty = parts[0]; let unit = parts[1];
- if(num==191){ return {no:191, name:"Parachute Tel", qty:"500", unit:"ML", full:"Parachute Tel 500 ML", price:23, ico:"🥥"}; }
- let basePrice = prod.p;
- let price = basePrice * (parseInt(qty)||1) + (num % 30);
- if(unit=="ML" || unit=="Gram") price = Math.max(5, Math.floor(price/5));
- if(unit=="Liter" || unit=="Kilo") price = price * 1;
- return {no:num, name:prod.n, qty:qty, unit:unit, full: prod.n+" "+unitStr, price:price, ico:prod.i};
+ let pi=(num-1)%products.length; let vi=Math.floor((num-1)/products.length)%20;
+ let prod=products[pi]; let unitStr=prod.u[vi%prod.u.length]; let parts=unitStr.split(' '); let qty=parts[0]; let unit=parts[1];
+ if(num==191){return {no:191,name:"Parachute Tel",qty:"500",unit:"ML",full:"Parachute Tel 500 ML",price:23,ico:"🥥"};}
+ let base=prod.p; let price=base*(parseInt(qty)||1)+(num%20); if(unit=="ML"||unit=="Gram") price=Math.max(5,Math.floor(price/5));
+ return {no:num,name:prod.n,qty:qty,unit:unit,full:prod.n+" "+unitStr,price:price,ico:prod.i};
 }
-
 function renderMore(){
  let g=document.getElementById('grid'); let html=''; let added=0; let tries=0;
  while(added<per && shown+tries<151000){
   tries++; let n=shown+tries; let p=getP(n);
   if(curF!='ALL'){
-    if(curF=='ML' && p.unit!='ML') continue;
-    if(curF=='Liter' && p.unit!='Liter') continue;
-    if(curF=='Kilo' && !(p.unit=='Kilo' || p.unit=='Gram')) continue;
-    if(curF=='Pieces' && p.unit!='Pieces') continue;
+    if(curF=='ML'&&p.unit!='ML')continue; if(curF=='Liter'&&p.unit!='Liter')continue;
+    if(curF=='Kilo'&&!(p.unit=='Kilo'||p.unit=='Gram'))continue; if(curF=='Pieces'&&p.unit!='Pieces')continue;
   }
   let q=document.getElementById('search').value.trim().toLowerCase();
-  if(q!=''){
-   if(!isNaN(q)){ if(parseInt(q)!=p.no) continue; }
-   else { if(p.full.toLowerCase().indexOf(q)==-1) continue; }
-  }
+  if(q!=''){ if(!isNaN(q)){if(parseInt(q)!=p.no)continue;} else if(p.full.toLowerCase().indexOf(q)==-1)continue; }
   html+='<div class="card"><span class="no">#'+p.no+'</span><div class="ico">'+p.ico+'</div><h4>'+p.name+'</h4><span class="unit">'+p.qty+' '+p.unit+'</span><div class="price">₹'+p.price+'</div><button onclick="add('+p.no+')">Add #'+p.no+'</button></div>';
-  added++; if(tries>5000) break;
+  added++; if(tries>5000)break;
  }
- shown+=tries;
- g.insertAdjacentHTML('beforeend',html);
- document.getElementById('sh').innerHTML=g.children.length;
+ shown+=tries; g.insertAdjacentHTML('beforeend',html);
 }
-function loadMore(){renderMore();}
 function setF(f,btn){curF=f;document.querySelectorAll('#filters button').forEach(b=>b.classList.remove('active'));btn.classList.add('active');document.getElementById('grid').innerHTML='';shown=0;renderMore();}
-document.getElementById('search').addEventListener('input',()=>{document.getElementById('grid').innerHTML='';shown=0;renderMore();});
+document.getElementById('search').addEventListener('input',()=>{
+  curF='ALL'; document.querySelectorAll('#filters button').forEach(b=>b.classList.remove('active')); document.querySelectorAll('#filters button')[0].classList.add('active');
+  document.getElementById('grid').innerHTML=''; shown=0; renderMore();
+});
 function add(no){let p=getP(no);cart.push(p);document.getElementById('cnt').innerHTML=cart.length;}
-function openCart(){if(cart.length==0){alert('Pehle Add karo');return;}let h='',tot=0;for(let i=0;i<cart.length;i++){tot+=cart[i].price;h+='<div style="display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid #eee;font-size:12px"><span>#'+cart[i].no+' '+cart[i].full+' ₹'+cart[i].price+'</span><span onclick="cart.splice('+i+',1);document.getElementById(\'cnt\').innerHTML=cart.length;openCart()" style="color:red">X</span></div>';}h+='<b>Total ₹'+tot+'</b>';document.getElementById('clist').innerHTML=h;show(1);document.getElementById('chk').style.display='block';}
+function openCart(){if(cart.length==0){alert('Pehle Add karo');return;}let h='',tot=0;for(let i=0;i<cart.length;i++){tot+=cart[i].price;h+='<div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid #eee;font-size:12px"><span>#'+cart[i].no+' '+cart[i].full+' ₹'+cart[i].price+'</span><span onclick="cart.splice('+i+',1);document.getElementById(\'cnt\').innerHTML=cart.length;openCart()" style="color:red">X</span></div>';}h+='<b>Total ₹'+tot+'</b>';document.getElementById('clist').innerHTML=h;show(1);document.getElementById('chk').style.display='block';}
 function show(n){document.getElementById('p1').style.display=n==1?'block':'none';document.getElementById('p2').style.display=n==2?'block':'none';document.getElementById('p3').style.display=n==3?'block':'none';document.getElementById('p4').style.display=n==4?'block':'none';for(let i=1;i<=4;i++){let el=document.getElementById('s'+i);if(i<n)el.className='done';else if(i==n)el.className='active';else el.className='';}}
 function goPay(){let nm=document.getElementById('nm').value.trim(),mo=document.getElementById('mo').value.trim(),ad=document.getElementById('ad').value.trim(),pin=document.getElementById('pin').value.trim();if(nm==''||mo==''||ad==''||pin==''){alert('Sab bharo');return;}show(3);}
 function pick(el,m){pay=m;document.querySelectorAll('.pay').forEach(p=>p.classList.remove('sel'));el.classList.add('sel');document.getElementById('ub').style.display=m=='UPI'?'block':'none';}
 function goWA(){let tot=0,list='';for(let i=0;i<cart.length;i++){tot+=cart[i].price;list+=(i+1)+'. #'+cart[i].no+' '+cart[i].full+' ₹'+cart[i].price+'<br>';}document.getElementById('sum').innerHTML=list+'<b>Total ₹'+tot+'</b>';show(4);}
-function sendWA(){let nm=document.getElementById('nm').value,mo=document.getElementById('mo').value,ad=document.getElementById('ad').value,pin=document.getElementById('pin').value;let tot=0,list='';for(let i=0;i<cart.length;i++){tot+=cart[i].price;list+=(i+1)+'. #'+cart[i].no+' '+cart[i].full+' Rs'+cart[i].price+'%0A';}let msg='*APLA DUKAN*%0A'+nm+'%0A'+mo+'%0A'+ad+' '+pin+'%0A%0A'+list+'Total Rs'+tot;window.open('https://wa.me/917415698590?text='+msg,'_blank');}
+function sendWA(){let nm=document.getElementById('nm').value,mo=document.getElementById('mo').value,ad=document.getElementById('ad').value,pin=document.getElementById('pin').value,lm=document.getElementById('lm').value,txn=document.getElementById('txn').value;let tot=0,list='';for(let i=0;i<cart.length;i++){tot+=cart[i].price;list+=(i+1)+'. #'+cart[i].no+' '+cart[i].full+' Rs'+cart[i].price+'%0A';}let msg='*APLA DUKAN*%0A*Cust:* '+nm+'%0A*Mob:* '+mo+'%0A*Addr:* '+ad+' '+pin+' '+lm+'%0A*Pay:* '+pay+(txn?'%0A*UTR:* '+txn:'')+'%0A%0A'+list+'*Total Rs'+tot+'*';window.open('https://wa.me/917415698590?text='+msg,'_blank');}
 function closeChk(){document.getElementById('chk').style.display='none';}
 renderMore();renderMore();
+window.addEventListener('scroll',()=>{ if(window.innerHeight+window.scrollY >= document.body.offsetHeight-600){ renderMore(); }});
 </script></body></html>
